@@ -283,6 +283,69 @@ How long does it take to pay off a car loan given
 ???
 ~~~
 
+
+---
+Version written during lecture (1/11)
+~~~
+#car_loan.py
+import sys
+print(sys.argv)
+
+try:
+    price = int(sys.argv[1])
+    annual_rate = float(sys.argv[2])
+    monthly = int(sys.argv[3])
+except IndexError:
+    print(&#34;Usage:&#34;, sys.argv[0], &#34;price annual_rate monthly_payment&#34;)
+    sys.exit(1)
+    
+#(1 + monthly_rate)**12*debt  = (1+ annual_rate)*debt 
+monthly_rate = (1 + annual_rate)**(1/12) - 1
+
+debt = price
+
+month = 0
+payments = []
+while debt &gt; 0:
+    month = month + 1
+    debt = debt*(1 + monthly_rate)
+    debt = debt - monthly
+    #print(month, debt)
+    payments.append(debt)
+    
+print(&#34;Time to pay off car loan&#34;, month//12, &#34;years&#34;, month%12, &#34;months&#34;)
+for p in payments:
+    print(round(p,2))
+~~~
+
+---
+
+Sample runs
+
+~~~
+python car_loan.py 
+[&#39;car_loan.py&#39;]
+Usage: car_loan.py price annual_rate monthly_payment
+~~~
+
+~~~
+#; python car_loan.py 100000 .03 2000 | head
+[&#39;car_loan.py&#39;, &#39;100000&#39;, &#39;.03&#39;, &#39;2000&#39;]
+Time to pay off car loan 4 years 6 months
+98246.63
+96488.93
+94726.9
+92960.52
+91189.79
+89414.68
+87635.2
+85851.34
+...
+~~~
+
+The program fulfils basic requirements, 
+but there is always room for improvement/polishing...
+
 ---
 
 ## Some Python types
