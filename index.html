@@ -236,6 +236,18 @@ most popular programming editor
 normally lists editors like vim, emacs, atom, sublime.
 Spending time to learn one well is worth the investment.
 
+---
+
+### IDE:s
+
+IDE = Integrated development environment
+
+~~~
+$ pip install mu-editor
+$ mu-editor hello.py
+~~~
+
+&lt;img src=&#34;mu.png&#34; height=&#34;350&#34;&gt;
 
 ---
 
@@ -474,16 +486,6 @@ Empty list
 
 ---
 
-as for dictionaries
-```
-&gt;&gt;&gt; if {&#39;count&#39;: 1}:
-...     print(&#34;Non-empty dict&#34;)
-... else:
-...     print(&#34;Empty dict&#34;)
-Non-empty dict
-
-```
----
 
 ### Functions
 
@@ -537,7 +539,7 @@ Commonly used Python modules
 * system modules
 * needed e.g. for arguments to a script
 * `sys.argv` is a list of string arguments
-* `sys.argv\[0\]` is the file name
+* `sys.argv [0]` is the file name
 
 ~~~
 import sys
@@ -577,27 +579,24 @@ Many use the math modules as a desktop calculator
 
 ---
 
-#### Writing/using your own modules
+### Writing/using your own modules
 
-* Suppose you have written file ``a.py`` with function ``b``
-```
-    #a.py
-    def fun():
-        ...
-        return some_value
-```
+* Suppose you have written file ``hello.py`` with function ``say_hello``
 
-* To access the same function in other code, import module
-```
-    import a
-    val = a.fun()
-```
+~~~
+#hello.py
+def say_hello():
+    return &#34;Hello world!&#34;
+~~~
 
-* or to import an individual function of a module
-```
-    from a import fun
-    c = fun()
-```
+* To access the same function in other code, import the module
+
+~~~
+&gt;&gt;&gt; import hello
+&gt;&gt;&gt; message = hello.say_hello()
+&gt;&gt;&gt; print(message)
+Hello world!
+~~~
 
 
 ---
@@ -653,21 +652,25 @@ First example of iterator
 
 ### Summary
 
-
 * Basic syntax - indentation
 * Basic built in variable types
 * Scalar and container types
 * Modules
 * Files
 
+### Standard documentation
+* https://docs.python.org/3
 
 ### On-line books
-
-Jake van der Plas: 
+* Jake van der Plas: 
 &lt;a href=&#34;http://nbviewer.jupyter.org/github/jakevdp/WhirlwindTourOfPython/blob/master/Index.ipynb&#34;&gt; A Worldwind Tour of Python&lt;/a&gt;
+* Jake van der Plas: &lt;a href=&#34;https://jakevdp.github.io/PythonDataScienceHandbook/&#34;&gt;Data Science Handbook&lt;/a&gt;
+* Al Sweigart: &lt;a href=&#34;https://automatetheboringstuff.com&#34;&gt;Automate the Boring Stuff with Python&lt;/a&gt;
 
-Al Sweigart:
-&lt;a href=&#34;https://automatetheboringstuff.com&#34;&gt;Automate the Boring Stuff with Python&lt;/a&gt;
+### On-line tutorials
+* https://docs.python.org/3/tutorial/
+* https://realpython.com
+
     </textarea>
 
     <script src="/python/refreeze/js/remark-latest.min.js" type="text/javascript"></script>
