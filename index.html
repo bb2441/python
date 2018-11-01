@@ -137,29 +137,537 @@ class: center, middle, inverse
 
 ---
 
-&lt;script type=&#34;text/javascript&#34;
-  src=&#34;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#34;&gt;
-&lt;/script&gt;
-# python
+&lt;style&gt;
+    body {
+        background: white }
+    section {
+        background: white;
+        color: black;
+        border-radius: 1em;
+        padding: 1em;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%) }
+&lt;/style&gt;
+# Python basics
 
-## Olav Vahtras
-
-KTH
+BB2441 
 
 ---
 
 layout: false
 
-## Slide
+# Python Basics
 
-- Hi
-- Ho
+
+## Running
+
+### Interactively
+
+* `python` without arguments starts up  the Python interpreter 
+* The interpreter reads lines one by one in the Python programming language and executes them
+* The interpreter prints prompt `&gt;&gt;&gt;` when it is waiting for input
+
+~~~
+$ python
+&gt;&gt;&gt; print(&#34;Hello world&#34;)
+Hello world
+&gt;&gt;&gt;
+~~~
+
+* A read-evaluate-print-loop (REPL)
+    - reads a Python expression
+    - evaluates the expression
+    - prints the value to the screen
+    - starting over (loop)
+
+---
+### Running scripts
+
+Assuming we have a file `hello.py` with content
+
+~~~
+#hello.py
+print(&#34;Hello world&#34;)
+~~~
+
+we run the program from the command line with
+
+~~~
+$ python hello.py
+Hello world
+~~~
+
+- --
+
+In Linux:
+~~~
+#!/usr/bin/python
+print(&#34;Hello world&#34;)
+~~~
+and the file is executable (`chmod +x`)and in your $PATH
+~~~
+$ hello.py
+Hello world
+~~~
+
+The initial line `#!/usr/bin/python` tells the computer what program to use to
+interpret the lines below
 
 ---
 
-## Slide
+## Creating Python scripts
 
-- Write me
+### Text editors
+
+To enter code into files you need to use a text editor (not a word processor
+like Microsoft Word). A text editor is good for programming if it automatically
+colors special keywords for the programming language of that file. A simple 
+editor that fulfills this is `nano`.
+
+&lt;img src=&#34;nano.png&#34; height=&#34;250&#34;&gt;
+
+Developers survey on 
+&lt;a href=&#34;https://insights.stackoverflow.com/survey/2018/#development-environments-and-tools&#34;&gt;
+most popular programming editor
+&lt;/a&gt;: 
+normally lists editors like vim, emacs, atom, sublime.
+Spending time to learn one well is worth the investment.
+
+
+---
+
+### Notebooks
+
+* work/develop in browser
+* mix documentation and code
+~~~
+$ jupyter notebook
+~~~
+&lt;img src=&#39;jupyter.png&#39; height=&#34;350&#34; &gt;
+* good for exploration/experimentation/demonstration
+* not good for writing large structured programs
+
+---
+
+&lt;section&gt;
+Let us code
+&lt;/section&gt;
+
+---
+
+## Example
+
+How long does it take to pay off a car loan given 
+
+* prince 
+* annual interest rate
+* monthly payment
+
+~~~
+#car_loan.py
+???
+~~~
+
+---
+
+## Some Python types
+
+Values in Python have a type
+A type determines the range of possible values and operations that can be
+performed
+
+###  Numerical
+
+* whole numbers (`int`): e.g. `-1, 7, 2000`
+* decimal numbers (`float`): `3.14, 1.0 -7.25`
+* complex numbers (`complex`): `1j, 7+5j`
+* logical (`bool`): `True`, `False`
+
+---
+
+###  String: `str`
+
+- sequence of characters
+- literal strings are written within quotation marks
+- single `&#39;` and double `&#34;` quotation marks have the same status
+- three quotation marks limit strings that can span several lines
+
+
+~~~
+&gt;&gt;&gt; print(&#34;It&#39;s time&#34;)
+It&#39;s time
+~~~
+
+
+~~~
+&gt;&gt;&gt; print(&#39;Our boss is &#34;nice&#34;. 😀&#39;)
+Our boss is &#34;nice&#34;. 😀
+~~~
+
+~~~
+&gt;&gt;&gt; print(&#34;&#34;&#34;Hello
+... world&#34;&#34;&#34;)
+Hello
+world
+~~~
+
+---
+
+## Variables
+
+* To save the value of an object it is assigned to a *variable*
+* The assignment operator is `=`
+* Assignment is to bind a name to an object
+* Python has so called free typing 
+
+### Example
+~~~
+&gt;&gt;&gt; x = 8*9
+&gt;&gt;&gt; print(x)
+72
+~~~
+
+* Right-side is evaluated
+* An `int` object with value 72 is created in memory
+* An association is created with this object and the name `x`
+
+---
+
+## Container types
+
+* Lists
+* Tuples
+* Dictionaries
+
+---
+
+### Lists
+
+* A list is a ordered sequence of elements 
+* Notation: square brackets , comma-separated
+* List can have objects of different types
+* List members are referenced with `[n]` where `n=0, 1, 2...`
+* A list can be empty, `[]`
+
+~~~
+&gt;&gt;&gt; colours = [&#39;hearts&#39;, &#39;spades&#39;, &#39;diamonds&#39;, &#39;clubs&#39;]
+&gt;&gt;&gt; values = [2, 3, 4, 5, 6, 7, 8, 9, 10, &#39;knight&#39;, &#39;queen&#39;, &#39;king&#39;, &#39;ace&#39;]
+~~~
+
+---
+
+### Tuples
+
+* An immutable (unchangeable) sequence of objects
+* Similar to lists
+* () is the empty tuple
+* (1,)  contains 1 element -note the comma
+
+Handy packing and unpacking
+
+```
+&gt;&gt;&gt; t = 1, 2 #packing
+&gt;&gt;&gt; x, y = t #unpacking
+&gt;&gt;&gt; x, y
+(1, 2)
+&gt;&gt;&gt; x, y = y, x #swapping
+&gt;&gt;&gt; x, y
+(2, 1)
+
+
+```
+---
+
+### Dictionaries
+
+* Sets of key-value pairs
+* The key can be any immutable object
+* Very useful for complex structures
+* Efficient and highly optimized
+
+```
+empty =  {} # empty dict
+newdict = {&#39;a&#39;:1, &#39;b&#39;:2}
+```
+
+---
+
+### Repetition (iteration, looping)
+
+* The `for ... in` statement is used repeat the same operation for all elements of a
+sequence
+
+* A loop variable will reference the elements of the sequence, one at a time
+
+
+```python
+&gt;&gt;&gt; for e in [1, 2, 3]: 
+...    print(e)
+1
+2
+3
+
+```
+
+```python
+&gt;&gt;&gt; for c in &#39;hello&#39;:
+...     print(c)
+h
+e
+l
+l
+o
+
+```
+
+
+
+```python
+&gt;&gt;&gt; for k, v in {&#39;a&#39;: 1, &#39;b&#39;: 2}.items():                                       
+...    print(k, v)
+a 1
+b 2
+
+```
+
+
+---
+
+### Branching (if statements)
+
+Conditional execution of code blocks depending on whether an expression
+evaluates to True or not:
+
+```
+&gt;&gt;&gt; if True:
+...     print(&#34;Yes&#34;)
+... else:
+...     print(&#34;No&#34;)
+Yes
+
+```
+
+```
+&gt;&gt;&gt; i = j = 0
+&gt;&gt;&gt; if i &gt; j:
+...     print(i, &#34; is larger than &#34;, j)
+... else:
+...     print(i, &#34;is smaller than or equal to&#34;, j)
+0 is smaller than or equal to 0
+
+```
+
+Most object types have some truthiness. Empty lists in a logical context
+evaluate to False, non-empty to True
+
+```
+&gt;&gt;&gt; if []:
+...     print(&#34;Non-empty list&#34;)
+... else:
+...     print(&#34;Empty list&#34;)
+Empty list
+
+```
+
+---
+
+as for dictionaries
+```
+&gt;&gt;&gt; if {&#39;count&#39;: 1}:
+...     print(&#34;Non-empty dict&#34;)
+... else:
+...     print(&#34;Empty dict&#34;)
+Non-empty dict
+
+```
+---
+
+### Functions
+
+* Functions are objects that can take some input and return some output.
+Functions are the primary way of grouping code into independent units, that can be tested and reused
+
+* Function definitions start `def`, a name,  parentheses with or without
+arguments (comma-separated) and a colon.
+The body of the function is indented with respect to the `def` keyword.
+The last line of a function definition is normally a `return` statement and determines the value of a function call
+
+```
+&gt;&gt;&gt; def square(x):
+...    x2 = x * x
+...    return x2
+
+```
+
+* Functions are called with function name and an actual parameter. 
+
+```
+&gt;&gt;&gt; square(2)
+4
+
+```
+
+* Inside the function the formal parameter `x` becomes a reference to the actual
+parameter `2`.
+
+
+---
+
+### Modules
+
+
+* a file with python source 
+   - name is the filename without the ``.py`` extension
+* `import` modules to reuse code
+* members of module referenced with dot notation `module.member`
+
+Commonly used Python modules
+
+* ``sys``
+* ``os``
+* ``math``
+
+---
+
+#### `sys`
+
+* system modules
+* needed e.g. for arguments to a script
+* `sys.argv` is a list of string arguments
+* `sys.argv\[0\]` is the file name
+
+~~~
+import sys
+infile = sys.argv[1]
+~~~
+
+#### `os`
+
+* Interaction with operating system
+* Example: execute a unix command 
+
+```
+    import os
+    os.system(&#39;/bin/date&#39;)
+```
+
+
+#### `math`
+
+* all basic elementary functions
+* fundamental constants
+
+```
+    import math
+    print(math.sin(math.pi/2))
+```
+
+#### Tip
+
+Many use the math modules as a desktop calculator
+
+    $ python
+    &gt;&gt;&gt; from math import *
+    &gt;&gt;&gt; print(pi/2)
+    1.5707963267948966
+    &gt;&gt;&gt;
+
+---
+
+#### Writing/using your own modules
+
+* Suppose you have written file ``a.py`` with function ``b``
+```
+    #a.py
+    def fun():
+        ...
+        return some_value
+```
+
+* To access the same function in other code, import module
+```
+    import a
+    val = a.fun()
+```
+
+* or to import an individual function of a module
+```
+    from a import fun
+    c = fun()
+```
+
+
+---
+
+### Files
+
+```
+    &gt;&gt;&gt; fo = open(&#39;foo&#39;, &#39;r&#39;)
+
+```
+
+* opens the file name for reading
+* if is does not exist - Error
+* returns a file object assigned to variable fo
+
+```
+    &gt;&gt;&gt; file_str = fo.read()
+
+```
+* loads the contensts of the file to a string *file_str*
+
+```
+    &gt;&gt;&gt; fo.close()
+
+```
+* close the file when done
+
+---
+
+### Reading text
+
+Other ways to read a file into memory
+
+* As a list of strings
+```
+    fo.readlines()
+```
+* One line at a time
+```
+    fo.readline() 
+```
+* In a for loop
+```
+    fo = open(&#39;file.txt&#39;) 
+    for line in fo:
+        *work on line*
+```
+
+The for statement is very powerful!
+First example of iterator
+
+---
+
+### Summary
+
+
+* Basic syntax - indentation
+* Basic built in variable types
+* Scalar and container types
+* Modules
+* Files
+
+
+### On-line books
+
+Jake van der Plas: 
+&lt;a href=&#34;http://nbviewer.jupyter.org/github/jakevdp/WhirlwindTourOfPython/blob/master/Index.ipynb&#34;&gt; A Worldwind Tour of Python&lt;/a&gt;
+
+Al Sweigart:
+&lt;a href=&#34;https://automatetheboringstuff.com&#34;&gt;Automate the Boring Stuff with Python&lt;/a&gt;
     </textarea>
 
     <script src="/python/refreeze/js/remark-latest.min.js" type="text/javascript"></script>
