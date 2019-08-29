@@ -159,8 +159,13 @@ BB2441
 
 layout: false
 
-# Python Basics
+# Content
 
+* [Python Basics](#Python Basics)
+* [Running](#Running)
+
+---
+name: Running
 
 ## Running
 
@@ -200,21 +205,31 @@ $ python hello.py
 Hello world
 ~~~
 
-- --
+---
 
 In Linux:
 ~~~
-#!/usr/bin/python
+#!/usr/bin/env python
 print(&#34;Hello world&#34;)
 ~~~
-and the file is executable (`chmod +x`)and in your $PATH
+and the file is executable (`chmod +x`)
 ~~~
-$ hello.py
+$ ./hello.py
 Hello world
 ~~~
 
-The initial line `#!/usr/bin/python` tells the computer what program to use to
+When the file is executed by name,
+the initial line `#!...` tells the computer what program to use to
 interpret the lines below
+
+e.g.
+
+* `#!/bin/bash` - execute this file as a bash script
+
+* `#!/usr/bin/python` - execute this file as a python script using the standard installation
+
+* `#!/usr/bin/env python` - execute this file as a python script using the first available python in the `$PATH`
+
 
 ---
 
@@ -222,15 +237,13 @@ interpret the lines below
 
 ### Text editors
 
+
 To enter code into files you need to use a text editor (not a word processor
 like Microsoft Word). A text editor is good for programming if it automatically
-colors special keywords for the programming language of that file. A simple 
-editor that fulfills this is `nano`.
-
-&lt;img src=&#34;nano.png&#34; height=&#34;250&#34;&gt;
+colors special keywords for the programming language of that file. 
 
 Developers survey on 
-&lt;a href=&#34;https://insights.stackoverflow.com/survey/2018/#development-environments-and-tools&#34;&gt;
+&lt;a href=&#34;https://insights.stackoverflow.com/survey/2019/#development-environments-and-tools&#34;&gt;
 most popular programming editor
 &lt;/a&gt;: 
 normally lists editors like vim, emacs, atom, sublime.
@@ -238,9 +251,39 @@ Spending time to learn one well is worth the investment.
 
 ---
 
+#### Nano
+
+A simple 
+editor that fulfills this is `nano`.
+
+&lt;img src=&#34;nano.png&#34; height=&#34;400&#34;&gt;
+
+---
+
+#### vim
+
+An advanced terminal-based editor
+
+&lt;img src=&#34;vim.png&#34; height=&#34;600&#34;&gt;
+
+---
+
+#### VS Code
+
+The most popular editor today (by Microsoft, open-source)
+
+&lt;img src=&#34;vscode.png&#34; height=&#34;600&#34;&gt;
+
+---
+
 ### IDE:s
 
 IDE = Integrated development environment
+
+#### mu-editor
+
+* Simple environment for beginners (without distractions)
+* Often used for teaching children
 
 ~~~
 $ pip install mu-editor
@@ -248,6 +291,17 @@ $ mu-editor hello.py
 ~~~
 
 &lt;img src=&#34;mu.png&#34; height=&#34;350&#34;&gt;
+
+---
+#### Pycharm
+
+A professional Python-oriented environment
+
+&lt;img src=&#34;pycharm.png&#34; height=&#34;400&#34;&gt;
+
+
+* a free community version
+* a paid pro version - students can get it for free at https://www.jetbrains.com/student/
 
 ---
 
@@ -282,10 +336,7 @@ How long does it take to pay off a car loan given
 #car_loan.py
 ???
 ~~~
-
-
----
-Version written during lecture (1/11)
+&lt;!---
 ~~~
 #car_loan.py
 import sys
@@ -318,6 +369,8 @@ for p in payments:
     print(round(p,2))
 ~~~
 
+---&gt;
+
 ---
 
 Sample runs
@@ -342,15 +395,12 @@ Time to pay off car loan 4 years 6 months
 85851.34
 ...
 ~~~
-
-The program fulfils basic requirements, 
-but there is always room for improvement/polishing...
-
 ---
 
 ## Some Python types
 
 Values in Python have a type
+
 A type determines the range of possible values and operations that can be
 performed
 
@@ -365,7 +415,7 @@ performed
 
 ###  String: `str`
 
-- sequence of characters
+- sequence of characters ([unicode](https://docs.python.org/3/howto/unicode.html))
 - literal strings are written within quotation marks
 - single `&#39;` and double `&#34;` quotation marks have the same status
 - three quotation marks limit strings that can span several lines
@@ -380,6 +430,11 @@ It&#39;s time
 ~~~
 &gt;&gt;&gt; print(&#39;Our boss is &#34;nice&#34;. 😀&#39;)
 Our boss is &#34;nice&#34;. 😀
+~~~
+
+~~~
+&gt;&gt;&gt; print(&#39;\u24C5 \u24CE \u24C9 \u24BD \u24C4 \u24C3&#39;)
+Ⓟ Ⓨ Ⓣ Ⓗ Ⓞ Ⓝ
 ~~~
 
 ~~~
@@ -472,13 +527,15 @@ newdict = {&#39;a&#39;:1, &#39;b&#39;:2}
 
 ### Repetition (iteration, looping)
 
+#### for loops
+
 * The `for ... in` statement is used repeat the same operation for all elements of a
 sequence
 
 * A loop variable will reference the elements of the sequence, one at a time
 
 
-```python
+```
 &gt;&gt;&gt; for e in [1, 2, 3]: 
 ...    print(e)
 1
@@ -487,7 +544,7 @@ sequence
 
 ```
 
-```python
+```
 &gt;&gt;&gt; for c in &#39;hello&#39;:
 ...     print(c)
 h
@@ -500,14 +557,39 @@ o
 
 
 
-```python
+```
 &gt;&gt;&gt; for k, v in {&#39;a&#39;: 1, &#39;b&#39;: 2}.items():                                       
 ...    print(k, v)
 a 1
 b 2
 
 ```
+---
 
+#### while loops
+
+```
+import random
+entered = &#34;&#34;
+while not entered.startswith(&#39;q&#39;):
+    entered = input(&#34;Press return to Roll dice:&#34;)
+    print(random.choice([1, 2, 3, 4, 5, 6]))
+print(&#34;Game over&#34;)
+while True:
+    input(&#34;Roll dice&#34;)
+    print(random.choice
+```
+```
+Press return to Roll dice:
+4
+Press return to Roll dice:
+4
+Press return to Roll dice:
+3
+Press return to Roll dice:quit
+4
+Game over
+```
 
 ---
 
