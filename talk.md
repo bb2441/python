@@ -1,3 +1,4 @@
+name: cover
 <style>
     body {
         background: white }
@@ -44,6 +45,7 @@ Hello world
     - starting over (loop)
 
 ---
+name: scripts
 ### Running scripts
 
 Assuming we have a file `hello.py` with content
@@ -87,6 +89,7 @@ e.g.
 
 
 ---
+name: editors
 
 ## Creating Python scripts
 
@@ -105,6 +108,7 @@ normally lists editors like vim, emacs, atom, sublime.
 Spending time to learn one well is worth the investment.
 
 ---
+name: nano
 
 #### Nano
 
@@ -114,6 +118,7 @@ editor that fulfills this is `nano`.
 <img src="nano.png" height="400">
 
 ---
+name: vim
 
 #### vim
 
@@ -122,6 +127,7 @@ An advanced terminal-based editor
 <img src="vim.png" height="600">
 
 ---
+name: vscode
 
 #### VS Code
 
@@ -183,7 +189,7 @@ Let us code
 
 How long does it take to pay off a car loan given 
 
-* prince 
+* price 
 * annual interest rate
 * monthly payment
 
@@ -671,3 +677,4 @@ First example of iterator
 * https://docs.python.org/3/tutorial/
 * https://realpython.com
 
+---
