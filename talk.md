@@ -21,6 +21,42 @@ BB2441
 
 layout: false
 
+<!-- -
+:r !mdtoc --max-level=3 talk.md 
+--->
+
+
+* [Python basics](#cover)
+    + [Running](#Running)
+        - [Interactively](#Running)
+        - [Running scripts](#scripts)
+    + [Creating Python scripts](#editors)
+        - [Text editors](#editors)
+        - [IDE](#ide)
+        - [Notebooks](#notebook)
+    + [Example](#example)
+    + [Variables](#variables)
+        - [Example](#variables)
+    + [Some Python types](#types)
+        - [ Numerical](#types)
+        - [ String](#string)
+        - [Container types](#containers)
+    + [Logic](#logic)
+        - [Repetition ](#logic)
+        - [Branching ](#while)
+    + [Modularization](#modular)
+        - [Functions](#modular)
+        - [Modules](#modules)
+    + [Files](#files)
+        - [Reading text](#read)
+    + [Summary](#summary)
+        - [Standard documentation](#summary)
+        - [On-line books](#summary)
+        - [On-line tutorials](#summary)
+
+
+---
+
 name: Running
 
 ## Running
@@ -136,6 +172,7 @@ The most popular editor today (by Microsoft, open-source)
 <img src="vscode.png" height="600">
 
 ---
+name: ide
 
 ### IDE:s
 
@@ -154,6 +191,8 @@ $ mu-editor hello.py
 <img src="mu.png" height="350">
 
 ---
+name: pycharm
+
 #### Pycharm
 
 A professional Python-oriented environment
@@ -165,6 +204,7 @@ A professional Python-oriented environment
 * a paid pro version - students can get it for free at https://www.jetbrains.com/student/
 
 ---
+name: notebook
 
 ### Notebooks
 
@@ -184,6 +224,7 @@ Let us code
 </section>
 
 ---
+name: example
 
 ## Example
 
@@ -193,10 +234,7 @@ How long does it take to pay off a car loan given
 * annual interest rate
 * monthly payment
 
-~~~
-#car_loan.py
-???
-~~~
+
 <!---
 ~~~
 #car_loan.py
@@ -234,29 +272,86 @@ for p in payments:
 
 ---
 
-Sample runs
+Consider sample runs to give
 
 ~~~
-python car_loan.py 
-['car_loan.py']
-Usage: car_loan.py price annual_rate monthly_payment
+python payment.py 
+['payment.py']
+Usage: payment.py price annual_rate monthly_payment
 ~~~
 
 ~~~
-#; python car_loan.py 100000 .03 2000 | head
-['car_loan.py', '100000', '.03', '2000']
+$ python payment.py 100000 .03 2000 | head
 Time to pay off car loan 4 years 6 months
 98246.63
 96488.93
-94726.9
+94726.90
 92960.52
 91189.79
 89414.68
-87635.2
+87635.20
 85851.34
 ...
 ~~~
 ---
+First draft in class
+
+~~~
+#payment.py
+#!/usr/bin/env python
+import sys
+
+if len(sys.argv) != 4:
+    print("Usage: ...")
+    exit()
+
+price = int(sys.argv[1])
+annual_rate = float(sys.argv[2])
+monthly_payment = int(sys.argv[3])
+
+print("Price:", price)
+print("Annual rate:", annual_rate)
+print("Monthly_payment:", monthly_payment)
+
+#
+# (1 + annual_rate)*price = (1 + monthly_rate)**12 * price
+#
+monthly_rate = (1 + annual_rate)**(1/12) - 1
+print("monthly_rate",monthly_rate)
+
+
+debt = price
+# after one month
+
+while debt > 0:
+    debt = debt + monthly_rate*debt
+    debt = debt - monthly_payment
+    print("Debt:", debt)
+~~~
+
+---
+name: variables
+
+## Variables
+
+* To save the value of an object it is assigned to a *variable*
+* The assignment operator is `=`
+* Assignment is to bind a name to an object
+* Python has so called free typing 
+
+### Example
+~~~
+>>> x = 8*9
+>>> print(x)
+72
+~~~
+
+* Right-side is evaluated
+* An `int` object with value 72 is created in memory
+* An association is created with this object and the name `x`
+
+---
+name: types
 
 ## Some Python types
 
@@ -273,6 +368,7 @@ performed
 * logical (`bool`): `True`, `False`
 
 ---
+name: string
 
 ###  String: `str`
 
@@ -306,36 +402,18 @@ world
 ~~~
 
 ---
+name: containers
 
-## Variables
-
-* To save the value of an object it is assigned to a *variable*
-* The assignment operator is `=`
-* Assignment is to bind a name to an object
-* Python has so called free typing 
-
-### Example
-~~~
->>> x = 8*9
->>> print(x)
-72
-~~~
-
-* Right-side is evaluated
-* An `int` object with value 72 is created in memory
-* An association is created with this object and the name `x`
-
----
-
-## Container types
+### Container types
 
 * Lists
 * Tuples
 * Dictionaries
 
 ---
+name: lists
 
-### Lists
+#### Lists
 
 * A list is a ordered sequence of elements 
 * Notation: square brackets , comma-separated
@@ -349,8 +427,9 @@ world
 ~~~
 
 ---
+name: tuples
 
-### Tuples
+#### Tuples
 
 * An immutable (unchangeable) sequence of objects
 * Similar to lists
@@ -371,8 +450,9 @@ Handy packing and unpacking
 
 ```
 ---
+name: dicts
 
-### Dictionaries
+#### Dictionaries
 
 * Sets of key-value pairs
 * The key can be any immutable object
@@ -385,6 +465,9 @@ newdict = {'a':1, 'b':2}
 ```
 
 ---
+name: logic
+
+## Logic
 
 ### Repetition (iteration, looping)
 
@@ -426,6 +509,7 @@ b 2
 
 ```
 ---
+name: while
 
 #### while loops
 
@@ -491,7 +575,9 @@ Empty list
 ```
 
 ---
+name: modular
 
+## Modularization
 
 ### Functions
 
@@ -523,6 +609,7 @@ parameter `2`.
 
 
 ---
+name: modules
 
 ### Modules
 
@@ -585,7 +672,7 @@ Many use the math modules as a desktop calculator
 
 ---
 
-### Writing/using your own modules
+#### Writing/using your own modules
 
 * Suppose you have written file ``hello.py`` with function ``say_hello``
 
@@ -606,8 +693,9 @@ Hello world!
 
 
 ---
+name: files
 
-### Files
+## Files
 
 ```
     >>> fo = open('foo', 'r')
@@ -622,7 +710,7 @@ Hello world!
     >>> file_str = fo.read()
 
 ```
-* loads the contensts of the file to a string *file_str*
+* loads the contents of the file to a string *file_str*
 
 ```
     >>> fo.close()
@@ -631,6 +719,7 @@ Hello world!
 * close the file when done
 
 ---
+name: read
 
 ### Reading text
 
@@ -655,8 +744,9 @@ The for statement is very powerful!
 First example of iterator
 
 ---
+name: summary
 
-### Summary
+## Summary
 
 * Basic syntax - indentation
 * Basic built in variable types
@@ -677,4 +767,3 @@ First example of iterator
 * https://docs.python.org/3/tutorial/
 * https://realpython.com
 
----
