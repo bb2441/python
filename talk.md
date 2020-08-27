@@ -766,4 +766,5 @@ name: summary
 ### On-line tutorials
 * https://docs.python.org/3/tutorial/
 * https://realpython.com
+* David Beazley: <a href="https://dabeaz-course.github.io/practical-python/">Practical Python Programming</a>
 
