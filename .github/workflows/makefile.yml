@@ -12,10 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-      with:
-        packages:
-          pytest
+    - uses: actions/checkout@v3,pip-install@{release}
     
     - name: Run check
       run: make test
