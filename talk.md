@@ -344,6 +344,7 @@ name: variables
 >>> x = 8*9
 >>> print(x)
 72
+
 ~~~
 
 * Right-side is evaluated
@@ -381,17 +382,20 @@ name: string
 ~~~
 >>> print("It's time")
 It's time
+
 ~~~
 
 
 ~~~
 >>> print('Our boss is "nice". 😀')
 Our boss is "nice". 😀
+
 ~~~
 
 ~~~
 >>> print('\u24C5 \u24CE \u24C9 \u24BD \u24C4 \u24C3')
 Ⓟ Ⓨ Ⓣ Ⓗ Ⓞ Ⓝ
+
 ~~~
 
 ~~~
@@ -399,6 +403,7 @@ Our boss is "nice". 😀
 ... world""")
 Hello
 world
+
 ~~~
 
 ---
@@ -424,6 +429,7 @@ name: lists
 ~~~
 >>> colours = ['hearts', 'spades', 'diamonds', 'clubs']
 >>> values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'knight', 'queen', 'king', 'ace']
+
 ~~~
 
 ---
@@ -499,7 +505,23 @@ o
 
 ```
 
+---
 
+For dictionaries several options are possible
+```
+>>> for e in {'a': 1, 'b': 2}:
+...    print(e)
+a
+b
+
+```
+```
+>>> for e in {'a': 1, 'b': 2}.items():
+...    print(e)
+('a', 1)
+('b', 2)
+
+```
 
 ```
 >>> for k, v in {'a': 1, 'b': 2}.items():                                       
@@ -508,6 +530,7 @@ a 1
 b 2
 
 ```
+
 ---
 name: while
 
@@ -599,7 +622,7 @@ The last line of a function definition is normally a `return` statement and dete
 * Functions are called with function name and an actual parameter. 
 
 ```
->>> square(2)
+>>> square(2) # the value 2 is mapped to the name x inside the function
 4
 
 ```
@@ -689,6 +712,7 @@ def say_hello():
 >>> message = hello.say_hello()
 >>> print(message)
 Hello world!
+
 ~~~
 
 
@@ -698,7 +722,7 @@ name: files
 ## Files
 
 ```
-    >>> fo = open('foo', 'r')
+    >>> foo = open('foo', 'r')
 
 ```
 
@@ -707,13 +731,13 @@ name: files
 * returns a file object assigned to variable fo
 
 ```
-    >>> file_str = fo.read()
+    >>> file_str = foo.read()
 
 ```
 * loads the contents of the file to a string *file_str*
 
 ```
-    >>> fo.close()
+    >>> foo.close()
 
 ```
 * close the file when done

@@ -483,6 +483,7 @@ name: variables
 &gt;&gt;&gt; x = 8*9
 &gt;&gt;&gt; print(x)
 72
+
 ~~~
 
 * Right-side is evaluated
@@ -520,17 +521,20 @@ name: string
 ~~~
 &gt;&gt;&gt; print(&#34;It&#39;s time&#34;)
 It&#39;s time
+
 ~~~
 
 
 ~~~
 &gt;&gt;&gt; print(&#39;Our boss is &#34;nice&#34;. 😀&#39;)
 Our boss is &#34;nice&#34;. 😀
+
 ~~~
 
 ~~~
 &gt;&gt;&gt; print(&#39;\u24C5 \u24CE \u24C9 \u24BD \u24C4 \u24C3&#39;)
 Ⓟ Ⓨ Ⓣ Ⓗ Ⓞ Ⓝ
+
 ~~~
 
 ~~~
@@ -538,6 +542,7 @@ Our boss is &#34;nice&#34;. 😀
 ... world&#34;&#34;&#34;)
 Hello
 world
+
 ~~~
 
 ---
@@ -563,6 +568,7 @@ name: lists
 ~~~
 &gt;&gt;&gt; colours = [&#39;hearts&#39;, &#39;spades&#39;, &#39;diamonds&#39;, &#39;clubs&#39;]
 &gt;&gt;&gt; values = [2, 3, 4, 5, 6, 7, 8, 9, 10, &#39;knight&#39;, &#39;queen&#39;, &#39;king&#39;, &#39;ace&#39;]
+
 ~~~
 
 ---
@@ -638,7 +644,23 @@ o
 
 ```
 
+---
 
+For dictionaries several options are possible
+```
+&gt;&gt;&gt; for e in {&#39;a&#39;: 1, &#39;b&#39;: 2}:
+...    print(e)
+a
+b
+
+```
+```
+&gt;&gt;&gt; for e in {&#39;a&#39;: 1, &#39;b&#39;: 2}.items():
+...    print(e)
+(&#39;a&#39;, 1)
+(&#39;b&#39;, 2)
+
+```
 
 ```
 &gt;&gt;&gt; for k, v in {&#39;a&#39;: 1, &#39;b&#39;: 2}.items():                                       
@@ -647,6 +669,7 @@ a 1
 b 2
 
 ```
+
 ---
 name: while
 
@@ -828,6 +851,7 @@ def say_hello():
 &gt;&gt;&gt; message = hello.say_hello()
 &gt;&gt;&gt; print(message)
 Hello world!
+
 ~~~
 
 
@@ -837,7 +861,7 @@ name: files
 ## Files
 
 ```
-    &gt;&gt;&gt; fo = open(&#39;foo&#39;, &#39;r&#39;)
+    &gt;&gt;&gt; foo = open(&#39;foo&#39;, &#39;r&#39;)
 
 ```
 
@@ -846,13 +870,13 @@ name: files
 * returns a file object assigned to variable fo
 
 ```
-    &gt;&gt;&gt; file_str = fo.read()
+    &gt;&gt;&gt; file_str = foo.read()
 
 ```
 * loads the contents of the file to a string *file_str*
 
 ```
-    &gt;&gt;&gt; fo.close()
+    &gt;&gt;&gt; foo.close()
 
 ```
 * close the file when done
