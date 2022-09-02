@@ -507,7 +507,10 @@ o
 
 ---
 
-For dictionaries several options are possible
+For dictionaries several options are possible:
+
+* When looping over a dictionary the loop variable will be the dictionary keys
+
 ```
 >>> for e in {'a': 1, 'b': 2}:
 ...    print(e)
@@ -515,6 +518,10 @@ a
 b
 
 ```
+
+* With the `items` method of a dictionary one obtains a loop variable with the key-value pairs
+  as a tuple
+
 ```
 >>> for e in {'a': 1, 'b': 2}.items():
 ...    print(e)
@@ -523,11 +530,13 @@ b
 
 ```
 
+* The tuple can be unpacked on the fly by defining two loop variables
+
 ```
 >>> for k, v in {'a': 1, 'b': 2}.items():                                       
-...    print(k, v)
-a 1
-b 2
+...    print(k, '->', v)
+a -> 1
+b -> 2
 
 ```
 

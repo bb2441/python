@@ -646,7 +646,10 @@ o
 
 ---
 
-For dictionaries several options are possible
+For dictionaries several options are possible:
+
+* When looping over a dictionary the loop variable will be the dictionary keys
+
 ```
 &gt;&gt;&gt; for e in {&#39;a&#39;: 1, &#39;b&#39;: 2}:
 ...    print(e)
@@ -654,6 +657,10 @@ a
 b
 
 ```
+
+* With the `items` method of a dictionary one obtains a loop variable with the key-value pairs
+  as a tuple
+
 ```
 &gt;&gt;&gt; for e in {&#39;a&#39;: 1, &#39;b&#39;: 2}.items():
 ...    print(e)
@@ -662,11 +669,13 @@ b
 
 ```
 
+* The tuple can be unpacked on the fly by defining two loop variables
+
 ```
 &gt;&gt;&gt; for k, v in {&#39;a&#39;: 1, &#39;b&#39;: 2}.items():                                       
-...    print(k, v)
-a 1
-b 2
+...    print(k, &#39;-&gt;&#39;, v)
+a -&gt; 1
+b -&gt; 2
 
 ```
 
@@ -761,7 +770,7 @@ The last line of a function definition is normally a `return` statement and dete
 * Functions are called with function name and an actual parameter. 
 
 ```
-&gt;&gt;&gt; square(2)
+&gt;&gt;&gt; square(2) # the value 2 is mapped to the name x inside the function
 4
 
 ```
@@ -865,7 +874,7 @@ name: files
 
 ```
 
-* opens the file name for reading
+* opens a file with name `foo` for reading
 * if is does not exist - Error
 * returns a file object assigned to variable fo
 
