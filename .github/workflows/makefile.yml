@@ -1,5 +1,7 @@
 name: Makefile CI
 
+requirements: requirements.txt
+
 on:
   push:
     branches: [ "gh-pages" ]
@@ -12,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3,pip-install
+    - uses: actions/checkout@v3
     
     - name: Run check
       run: make test
