@@ -726,7 +726,7 @@ name: files
 
 ```
 
-* opens the file name for reading
+* opens a file with name `foo` for reading
 * if is does not exist - Error
 * returns a file object assigned to variable fo
 
