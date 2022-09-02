@@ -1,0 +1,8 @@
+name: Check docstrings
+on: [push]
+jobs:
+  Run doctest:
+    runs-on: ubuntu-latest
+    steps: make test
+      - run: echo "Run doctest"
+      - run: make test
