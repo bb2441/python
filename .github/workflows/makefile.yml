@@ -13,9 +13,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-      
-    - name: generate static file
-      run: make
     
     - name: Run check
       run: make test
