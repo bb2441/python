@@ -16,5 +16,6 @@ jobs:
     - uses: actions/setup-python@v1
     
     - name: Run check
-      run: pip install pytest
-      run: make test
+      run: |
+        pip install pytest
+        make test
