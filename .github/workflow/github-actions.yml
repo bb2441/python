@@ -1,8 +1,12 @@
 name: Check docstrings
-on: [push]
+on:
+  workflow_dispatch:
+    push:
+      branches:
+        - gh-pages
 jobs:
-  Run doctest:
+  check-cells:
     runs-on: ubuntu-latest
     steps: make test
-      - run: echo "Run doctest"
-      - run: make test
+      - name: doctest
+        run: make test
