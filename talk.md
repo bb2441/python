@@ -160,7 +160,7 @@ name: vim
 
 An advanced terminal-based editor
 
-<img src="vim.png" height="600">
+<img src="vim.png" height="400">
 
 ---
 name: vscode
@@ -169,7 +169,7 @@ name: vscode
 
 The most popular editor today (by Microsoft, open-source)
 
-<img src="vscode.png" height="600">
+<img src="vscode.png" height="400">
 
 ---
 name: ide
@@ -423,12 +423,27 @@ name: lists
 * A list is a ordered sequence of elements 
 * Notation: square brackets , comma-separated
 * List can have objects of different types
-* List members are referenced with `[n]` where `n=0, 1, 2...`
-* A list can be empty, `[]`
 
 ~~~
 >>> colours = ['hearts', 'spades', 'diamonds', 'clubs']
 >>> values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'knight', 'queen', 'king', 'ace']
+
+~~~
+
+* List members are referenced with `[n]` where `n=0, 1, 2...`
+
+~~~
+>>> colours[0]
+'hearts'
+
+~~~
+
+* A list can be empty, `[]`
+
+~~~
+>>> values.clear()
+>>> values
+[]
 
 ~~~
 
@@ -466,9 +481,32 @@ name: dicts
 * Efficient and highly optimized
 
 ```
-empty =  {} # empty dict
-newdict = {'a':1, 'b':2}
+>>> empty =  {} # empty dict
+>>> newdict = {'a':1, 'b':2}
+
 ```
+
+* List members are referenced with `[key]` where (here) `key='a', 'b'`
+
+~~~
+>>> newdict['a']
+1
+>>> newdict['b']
+2
+
+~~~
+
+Common operations
+
+~~~
+>>> list(newdict.keys()) # return the keys as a list object
+['a', 'b']
+>>> list(newdict.values()) # return the values as a list object
+[1, 2]
+>>> list(newdict.items()) # return (key, value) tuples in a list
+[('a', 1), ('b', 2)]
+
+~~~
 
 ---
 name: logic

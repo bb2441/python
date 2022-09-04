@@ -299,7 +299,7 @@ name: vim
 
 An advanced terminal-based editor
 
-&lt;img src=&#34;vim.png&#34; height=&#34;600&#34;&gt;
+&lt;img src=&#34;vim.png&#34; height=&#34;400&#34;&gt;
 
 ---
 name: vscode
@@ -308,7 +308,7 @@ name: vscode
 
 The most popular editor today (by Microsoft, open-source)
 
-&lt;img src=&#34;vscode.png&#34; height=&#34;600&#34;&gt;
+&lt;img src=&#34;vscode.png&#34; height=&#34;400&#34;&gt;
 
 ---
 name: ide
@@ -562,12 +562,27 @@ name: lists
 * A list is a ordered sequence of elements 
 * Notation: square brackets , comma-separated
 * List can have objects of different types
-* List members are referenced with `[n]` where `n=0, 1, 2...`
-* A list can be empty, `[]`
 
 ~~~
 &gt;&gt;&gt; colours = [&#39;hearts&#39;, &#39;spades&#39;, &#39;diamonds&#39;, &#39;clubs&#39;]
 &gt;&gt;&gt; values = [2, 3, 4, 5, 6, 7, 8, 9, 10, &#39;knight&#39;, &#39;queen&#39;, &#39;king&#39;, &#39;ace&#39;]
+
+~~~
+
+* List members are referenced with `[n]` where `n=0, 1, 2...`
+
+~~~
+&gt;&gt;&gt; colours[0]
+&#39;hearts&#39;
+
+~~~
+
+* A list can be empty, `[]`
+
+~~~
+&gt;&gt;&gt; values.clear()
+&gt;&gt;&gt; values
+[]
 
 ~~~
 
@@ -605,9 +620,32 @@ name: dicts
 * Efficient and highly optimized
 
 ```
-empty =  {} # empty dict
-newdict = {&#39;a&#39;:1, &#39;b&#39;:2}
+&gt;&gt;&gt; empty =  {} # empty dict
+&gt;&gt;&gt; newdict = {&#39;a&#39;:1, &#39;b&#39;:2}
+
 ```
+
+* List members are referenced with `[key]` where (here) `key=&#39;a&#39;, &#39;b&#39;`
+
+~~~
+&gt;&gt;&gt; newdict[&#39;a&#39;]
+1
+&gt;&gt;&gt; newdict[&#39;b&#39;]
+2
+
+~~~
+
+Common operations
+
+~~~
+&gt;&gt;&gt; list(newdict.keys()) # return the keys as a list object
+[&#39;a&#39;, &#39;b&#39;]
+&gt;&gt;&gt; list(newdict.values()) # return the values as a list object
+[1, 2]
+&gt;&gt;&gt; list(newdict.items()) # return (key, value) tuples in a list
+[(&#39;a&#39;, 1), (&#39;b&#39;, 2)]
+
+~~~
 
 ---
 name: logic
